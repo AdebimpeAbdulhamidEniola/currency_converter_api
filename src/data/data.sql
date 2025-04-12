@@ -6,3 +6,11 @@ CREATE TABLE IF NOT EXISTS users(
     password_hash VARCHAR(100) UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 )
+
+CREATE TABLE IF NOT EXISTS exchange_rates (
+    id SERIAL PRIMARY KEY,
+    base_currency VARCHAR(3) NOT NULL,
+    target_currency VARCHAR(3) NOT NULL,
+    rate NUMERIC NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
