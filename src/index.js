@@ -5,7 +5,9 @@ import pool from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import { resourceUnavailable, generalErrorHandler } from "./middlewares/errorHandler.js";
 import createUserTable from "./data/createUserTable.js";
-
+import createRatesTable from "./data/createRatesTable.js";
+import { getExchangeRates } from "./controllers/openExchangeRateController.js";
+import "./cron/updateRateJob.js";
 
 
 dotenv.config()
@@ -15,7 +17,7 @@ const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());
-
+app.use('/', getExchangeRates)
 
 //Routes
 //Testing database connection
@@ -32,9 +34,9 @@ app.use(cors());
 
 //Create table before starting server and before going to an routes
 createUserTable();
+createRatesTable();
 
-
-app.use('/users', userRoutes)
+app.use('/users', userRoutes) 
 
 
 
