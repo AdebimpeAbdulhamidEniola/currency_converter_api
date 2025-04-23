@@ -6,8 +6,15 @@ import userRoutes from "./routes/userRoutes.js";
 import { resourceUnavailable, generalErrorHandler } from "./middlewares/errorHandler.js";
 import createUserTable from "./data/createUserTable.js";
 import createRatesTable from "./data/createRatesTable.js";
-import { getExchangeRates } from "./controllers/openExchangeRateController.js";
+//import { getExchangeRates } from "./controllers/openExchangeRateController.js";
 import "./cron/updateRateJob.js";
+import conversionRoutes from "./routes/conversionRoutes.js"
+import historyRoute from "./routes/historyRoute.js"
+import favouriteRoutes from "./routes/favouriteRoutes.js"
+import createRateAlertTable from "./data/createRateAlertTable.js";
+import alertRoutes from "./routes/alertRoutes.js";
+import { swaggerDocs, swaggerUi } from "./swaggerConfig.js";
+
 
 
 dotenv.config()
@@ -17,7 +24,7 @@ const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());
-app.use('/', getExchangeRates)
+
 
 //Routes
 //Testing database connection
@@ -35,10 +42,17 @@ app.use('/', getExchangeRates)
 //Create table before starting server and before going to an routes
 createUserTable();
 createRatesTable();
+createRateAlertTable();
+
 
 app.use('/users', userRoutes) 
 
+app.use('/conversion', conversionRoutes)
 
+app.use('/history', historyRoute);
+app.use('/favourites', favouriteRoutes)
+app.use('/alerts', alertRoutes) 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 
