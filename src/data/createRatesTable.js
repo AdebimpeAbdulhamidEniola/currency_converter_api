@@ -6,9 +6,8 @@ const createRatesTable = async() => {
         base_currency VARCHAR(3) NOT NULL,
         target_currency VARCHAR(3) NOT NULL,
         rate NUMERIC NOT NULL,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );`
-      
+        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT unique_base_target UNIQUE (base_currency, target_currency) )`;  
 try {
     const newTable = await pool.query(query);
     console.log("Table rates has successfully been created if not exist");
