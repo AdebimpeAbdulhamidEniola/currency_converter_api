@@ -12,5 +12,17 @@ CREATE TABLE IF NOT EXISTS exchange_rates (
     base_currency VARCHAR(3) NOT NULL,
     target_currency VARCHAR(3) NOT NULL,
     rate NUMERIC NOT NULL,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_base_target UNIQUE (base_currency, target_currency)
+);
+
+
+CREATE TABLE IF NOT EXISTS rate_alerts(
+    id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(50) REFERENCES users(email) ON DELETE CASCADE;
+    base_currency VARCHAR(3) NOT NULL,
+    target_currency VARCHAR(3) NOT NULL,
+    least_rate FLOAT NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_sent BOOLEAN DEFAULT FALSE
 );
