@@ -1,7 +1,7 @@
 import cron from "node-cron"
 import {getExchangeRates} from "../controllers/exchangeRatesController.js"
 
-cron.schedule("48 9 * * *", async () => {    
+cron.schedule("00 19 * * *", async () => {    
     try {
         await getExchangeRates();
         console.log("Exchange rates updated successfully");
