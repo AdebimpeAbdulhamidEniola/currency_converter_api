@@ -60,5 +60,5 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(resourceUnavailable);      //when user request didn't match any of the above endpoint
 app.use(generalErrorHandler) ;     //generalized error handling
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running....`);
 });
