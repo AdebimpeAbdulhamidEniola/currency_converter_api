@@ -11,7 +11,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: "http://localhost:4001", // Replace with your server URL
+                url: "https://currency-converter-api-zks2.onrender.com/",
             },
         ],
     },
