@@ -13,7 +13,7 @@ export default (req, res, next) => {
         const token = authHeader.split(" ")[1]; 
         const decoded = jwt.verify(token,process.env.SECRET_KEY );  //This returns the decoded token if the token is valid
         req.userInfo = decoded;
-        next();    n
+        next();    
     }
     catch(error) {
         next(error);
