@@ -2,6 +2,8 @@ import express from "express";
 import { fetchHistory } from "../controllers/fetchHistory.js";
 import checkAuth from "../middlewares/checkAuth.js";
 
+const router = express();
+
 /**
  * @swagger
  * /history:
@@ -10,8 +12,8 @@ import checkAuth from "../middlewares/checkAuth.js";
  *     description: Retrieve historical exchange rates for a given base and target currency on a specific date.
  *     tags:
  *       - History
-       security:
-         -bearerAuth: []
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: baseCurrency
@@ -39,9 +41,6 @@ import checkAuth from "../middlewares/checkAuth.js";
  *         description: Missing required query parameters.
  */
 
-const router = express();
-
-router.get('/', checkAuth,fetchHistory)
-
+router.get('/', checkAuth, fetchHistory);
 
 export default router;
