@@ -1,6 +1,8 @@
-import express from "express"; 
+import express from "express";
 import { getFavourites, saveFavourites } from "../controllers/favouriteController.js";
 import checkAuth from "../middlewares/checkAuth.js";
+
+const router = express();
 
 /**
  * @swagger
@@ -10,8 +12,8 @@ import checkAuth from "../middlewares/checkAuth.js";
  *     description: Save a currency pair as a favourite for the user.
  *     tags:
  *       - Favourites
-       security:
-         -bearerAuth: []
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -40,15 +42,14 @@ import checkAuth from "../middlewares/checkAuth.js";
  *     description: Retrieve a list of all favourite currency pairs for a user.
  *     tags:
  *       - Favourites
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: List of favourites retrieved successfully.
  */
 
-const router = express();
-
-//Save a favourite pair to the database
-router.post('/', checkAuth, saveFavourites)
-router.get('/', checkAuth, getFavourites)
+router.post('/', checkAuth, saveFavourites);
+router.get('/', checkAuth, getFavourites);
 
 export default router;
