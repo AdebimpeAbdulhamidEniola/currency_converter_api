@@ -10,6 +10,8 @@ import checkAuth from "../middlewares/checkAuth.js";
  *     description: Retrieve historical exchange rates for a given base and target currency on a specific date.
  *     tags:
  *       - History
+       security:
+         -bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: baseCurrency
