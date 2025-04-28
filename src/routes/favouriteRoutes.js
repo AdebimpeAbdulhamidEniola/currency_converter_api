@@ -10,6 +10,8 @@ import checkAuth from "../middlewares/checkAuth.js";
  *     description: Save a currency pair as a favourite for the user.
  *     tags:
  *       - Favourites
+       security:
+         -bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
