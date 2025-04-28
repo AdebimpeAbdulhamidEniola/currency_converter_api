@@ -10,6 +10,8 @@ import { convert, reverse } from "../controllers/conversionController.js";
  *     description: Convert an amount from one currency to another.
  *     tags:
  *       - Conversion
+       security:
+         -bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
