@@ -10,6 +10,8 @@ import { saveAlertDetails } from "../controllers/alertsController.js";
  *     description: Create a rate alert for a specific currency pair and threshold.
  *     tags:
  *       - Alerts
+       security:
+         -bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
