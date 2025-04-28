@@ -1,6 +1,8 @@
 import express from "express";
-import checkAuth from "../middlewares/checkAuth.js"
+import checkAuth from "../middlewares/checkAuth.js";
 import { convert, reverse } from "../controllers/conversionController.js";
+
+const router = express();
 
 /**
  * @swagger
@@ -10,8 +12,8 @@ import { convert, reverse } from "../controllers/conversionController.js";
  *     description: Convert an amount from one currency to another.
  *     tags:
  *       - Conversion
-       security:
-         -bearerAuth: []
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -43,6 +45,8 @@ import { convert, reverse } from "../controllers/conversionController.js";
  *     description: Reverse convert an amount between two currencies.
  *     tags:
  *       - Conversion
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -66,9 +70,7 @@ import { convert, reverse } from "../controllers/conversionController.js";
  *         description: Invalid input.
  */
 
-const router = express();
-
-router.post('/convert', checkAuth,convert )
-router.post('/reverse', checkAuth,reverse)
+router.post('/convert', checkAuth, convert);
+router.post('/reverse', checkAuth, reverse);
 
 export default router;
