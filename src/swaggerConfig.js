@@ -7,11 +7,25 @@ const swaggerOptions = {
         info: {
             title: "Currency Converter API",
             version: "1.0.0",
-            description: "API for converting currencies, fetching historical rates, and managing alerts.",
+            description: "API for currency conversion, historical rates, and alerts.",
         },
         servers: [
             {
-                url: "https://currency-converter-api-zks2.onrender.com/",
+                url: "https://currency-converter-api-zks2.onrender.com", 
+            },
+        ],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT", // Optional, but recommended
+                },
+            },
+        },
+        security: [
+            {
+                bearerAuth: [], // Apply globally to all routes
             },
         ],
     },
