@@ -1,7 +1,7 @@
 import cron from "node-cron"
 import {fetchAndStoreRates} from "../services/fetchAndStoreRates.js"
 
-cron.schedule("18 6 * * *", async () => {    
+cron.schedule("20 6 * * *", async () => {    
     try {
         await fetchAndStoreRates();
         console.log("Exchange rates updated successfully");
