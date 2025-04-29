@@ -10,8 +10,8 @@ import { saveAlertDetails } from "../controllers/alertsController.js";
  *     description: Create a rate alert for a specific currency pair and threshold.
  *     tags:
  *       - Alerts
-       security:
-         -bearerAuth: []
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -37,6 +37,6 @@ import { saveAlertDetails } from "../controllers/alertsController.js";
 
 const router = express();
 
-router.post('/', checkAuth,saveAlertDetails)
+router.post('/', checkAuth, saveAlertDetails);
 
 export default router;
