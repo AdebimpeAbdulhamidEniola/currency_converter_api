@@ -1,9 +1,9 @@
 import cron from "node-cron"
-import {getExchangeRates} from "../controllers/exchangeRatesController.js"
+import {getExchangeRates} from "../services/fetchAndStoreRates.js"
 
 cron.schedule("56 5 * * *", async () => {    
     try {
-        await getExchangeRates();
+        await fetchAndStoreRates();
         console.log("Exchange rates updated successfully");
     } catch (error) {
         console.error("Error updating exchange rates", error);
